@@ -23,37 +23,38 @@ function TestimonialsSlider({ items }) {
   };
 
   return (
-    <div className="relative mt-10 min-h-[260px] px-10 sm:px-16">
+    <div className="relative mx-auto mt-10 max-w-5xl px-12 sm:px-20">
       <button
         onClick={previous}
         aria-label="Previous testimonial"
-        className="absolute left-0 top-1/2 -translate-y-1/2 text-textPrimary/70 transition-colors duration-300 hover:text-accent"
+        className="liquid-chip absolute left-0 top-1/2 min-h-11 min-w-11 -translate-y-1/2 !p-0"
       >
-        <ArrowLeft strokeWidth={1.3} size={28} />
+        <ArrowLeft strokeWidth={1.5} size={20} />
       </button>
 
       <button
         onClick={next}
         aria-label="Next testimonial"
-        className="absolute right-0 top-1/2 -translate-y-1/2 text-textPrimary/70 transition-colors duration-300 hover:text-accent"
+        className="liquid-chip absolute right-0 top-1/2 min-h-11 min-w-11 -translate-y-1/2 !p-0"
       >
-        <ArrowRight strokeWidth={1.3} size={28} />
+        <ArrowRight strokeWidth={1.5} size={20} />
       </button>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={items[index].author}
-          initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
-          animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }}
-          exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20, transition: { duration: 0.8, ease: 'easeOut' } }}
-          className="text-center"
-        >
-          <p className="font-serif text-[34px] italic leading-[1.35] text-textPrimary sm:text-[46px]">
-            "{items[index].quote}"
-          </p>
-          <p className="mt-8 text-[13px] uppercase tracking-[0.22em] text-textMuted">{items[index].author}</p>
-        </motion.div>
-      </AnimatePresence>
+      <div className="relative min-h-[280px] border-y border-strokeSoft/40 px-6 py-9 text-center sm:px-12 sm:py-12">
+        <div className="pointer-events-none absolute left-0 right-0 top-0 h-24 bg-gradient-to-b from-white/40 to-transparent" />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={items[index].author}
+            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 16 }}
+            animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0, transition: { duration: 0.65, ease: 'easeOut' } }}
+            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 16, transition: { duration: 0.45, ease: 'easeOut' } }}
+            className="relative z-10"
+          >
+            <p className="font-serif text-[25px] italic leading-[1.45] text-inkStrong sm:text-[34px]">"{items[index].quote}"</p>
+            <p className="mt-8 text-[12px] uppercase tracking-[0.23em] text-gold">{items[index].author}</p>
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

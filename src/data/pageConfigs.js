@@ -28,6 +28,255 @@ export const navItems = [
   { label: 'Contact Us', path: '/contact-us' },
 ];
 
+export const megaMenuConfig = {
+  Gallery: {
+    title: 'Gallery Curation',
+    subtitle: 'Editorial visual stories captured across ceremony and reception moments.',
+    preview: {
+      image: images.gallery06,
+      caption: 'Explore signature gallery stories',
+      path: '/gallery/ceremony-aisles',
+    },
+    links: [
+      {
+        label: 'Ceremony Aisles',
+        path: '/gallery/ceremony-aisles',
+        description: 'Elegant aisle framing and floral focal points for vows.',
+        image: images.gallery01,
+      },
+      {
+        label: 'Editorial Portraits',
+        path: '/gallery/editorial-portraits',
+        description: 'Cinematic couple portraits with soft luxury composition.',
+        image: images.gallery06,
+      },
+      {
+        label: 'Reception Details',
+        path: '/gallery/reception-details',
+        description: 'Tablescapes, styling accents, and ambient details.',
+        image: images.gallery04,
+      },
+      {
+        label: 'Floral Installations',
+        path: '/gallery/floral-installations',
+        description: 'Architectural floral compositions and centerpiece drama.',
+        image: images.gallery02,
+      },
+      {
+        label: 'Night Moments',
+        path: '/gallery/night-moments',
+        description: 'Evening mood, lights, and timeless after-dusk captures.',
+        image: images.gallery05,
+      },
+    ],
+  },
+  'Our Menus': {
+    title: 'Menu Experiences',
+    subtitle: 'Curated culinary chapters designed for sophisticated celebrations.',
+    preview: {
+      image: images.eventPrivate,
+      caption: 'View signature tasting journey',
+      path: '/our-menus/signature-tasting',
+    },
+    links: [
+      {
+        label: 'Signature Tasting',
+        path: '/our-menus/signature-tasting',
+        description: 'Private tasting format with chef-led menu refinement.',
+        image: images.eventPrivate,
+      },
+      {
+        label: 'Seasonal Plated Menu',
+        path: '/our-menus/seasonal-plated-menu',
+        description: 'Season-forward plated dining crafted for graceful pacing.',
+        image: images.eventCorporate,
+      },
+      {
+        label: 'Garden Brunch Menu',
+        path: '/our-menus/garden-brunch-menu',
+        description: 'Light daytime menu for elegant outdoor gatherings.',
+        image: images.garden,
+      },
+      {
+        label: 'Dessert Atelier',
+        path: '/our-menus/dessert-atelier',
+        description: 'Artisanal desserts and finale moments with visual impact.',
+        image: images.gallery05,
+      },
+      {
+        label: 'Beverage Pairings',
+        path: '/our-menus/beverage-pairings',
+        description: 'Curated pairings that elevate every course transition.',
+        image: images.gallery04,
+      },
+    ],
+  },
+  Blogs: {
+    title: 'Journal Library',
+    subtitle: 'Planning intelligence, design notes, and curated hosting advice.',
+    preview: {
+      image: images.gallery05,
+      caption: 'Read latest planning notes',
+      path: '/blogs/planning-guides',
+    },
+    links: [
+      {
+        label: 'Planning Guides',
+        path: '/blogs/planning-guides',
+        description: 'Frameworks for timelines, flow, and ceremony sequencing.',
+        image: images.eventUpcoming,
+      },
+      {
+        label: 'Design Trends',
+        path: '/blogs/design-trends',
+        description: 'Emerging visual and styling directions in luxury weddings.',
+        image: images.gallery02,
+      },
+      {
+        label: 'Real Celebrations',
+        path: '/blogs/real-celebrations',
+        description: 'Case-style highlights from hosted celebrations.',
+        image: images.spaceBoho,
+      },
+      {
+        label: 'Venue Notes',
+        path: '/blogs/venue-notes',
+        description: 'Space planning insights for guest comfort and aesthetics.',
+        image: images.spaceMaison,
+      },
+      {
+        label: 'Hosting Tips',
+        path: '/blogs/hosting-tips',
+        description: 'Practical luxury hosting details for seamless execution.',
+        image: images.eventCorporate,
+      },
+    ],
+  },
+  Venue: {
+    title: 'Venue Spaces',
+    subtitle: 'Explore architectural zones crafted for ceremony-to-reception flow.',
+    preview: {
+      image: images.spaceMaison,
+      caption: 'Walk through key venue spaces',
+      path: '/venue/indoor-hall',
+    },
+    links: [
+      {
+        label: 'Indoor Hall',
+        path: '/venue/indoor-hall',
+        description: 'Grand indoor architecture for timeless ceremonial moments.',
+        image: images.indoor,
+      },
+      {
+        label: 'Garden Ceremony Lawn',
+        path: '/venue/garden-ceremony-lawn',
+        description: 'Open-air vows framed by curated landscape composition.',
+        image: images.garden,
+      },
+      {
+        label: 'Banquet Salon',
+        path: '/venue/banquet-salon',
+        description: 'Reception salon designed for dining and evening mood.',
+        image: images.banquet,
+      },
+      {
+        label: 'Private Lounge',
+        path: '/venue/private-lounge',
+        description: 'Intimate lounge zone for premium host and guest comfort.',
+        image: images.gallery03,
+      },
+      {
+        label: 'Suite Preparation Rooms',
+        path: '/venue/suite-preparation-rooms',
+        description: 'Calm preparation suites with natural light and privacy.',
+        image: images.gallery01,
+      },
+    ],
+  },
+  Events: {
+    title: 'Event Formats',
+    subtitle: 'Tailored event types for weddings, private and corporate hosting.',
+    preview: {
+      image: images.eventUpcoming,
+      caption: 'Discover event experience types',
+      path: '/events/wedding-weekend',
+    },
+    links: [
+      {
+        label: 'Wedding Weekend',
+        path: '/events/wedding-weekend',
+        description: 'Multi-day wedding programming with cohesive guest flow.',
+        image: images.eventUpcoming,
+      },
+      {
+        label: 'Private Celebrations',
+        path: '/events/private-celebrations',
+        description: 'Milestone private hosting with discreet premium service.',
+        image: images.eventPrivate,
+      },
+      {
+        label: 'Corporate Galas',
+        path: '/events/corporate-galas',
+        description: 'Executive-level events in a polished luxury environment.',
+        image: images.eventCorporate,
+      },
+      {
+        label: 'Engagement Parties',
+        path: '/events/engagement-parties',
+        description: 'Refined pre-wedding events with elevated social atmosphere.',
+        image: images.gallery03,
+      },
+      {
+        label: 'Bridal Showers',
+        path: '/events/bridal-showers',
+        description: 'Intimate bridal gatherings with curated styling direction.',
+        image: images.gallery02,
+      },
+    ],
+  },
+  'About Us': {
+    title: 'About Veloura',
+    subtitle: 'The people, philosophy, and standards behind every hosted celebration.',
+    preview: {
+      image: images.gallery01,
+      caption: 'Meet our story and team',
+      path: '/about-us/our-story',
+    },
+    links: [
+      {
+        label: 'Our Story',
+        path: '/about-us/our-story',
+        description: 'How Veloura Estate became a refined celebration destination.',
+        image: images.gallery01,
+      },
+      {
+        label: 'Our Team',
+        path: '/about-us/our-team',
+        description: 'Creative, operations, and hospitality specialists in-house.',
+        image: images.gallery02,
+      },
+      {
+        label: 'Craft Philosophy',
+        path: '/about-us/craft-philosophy',
+        description: 'The design-first principles that shape our event experience.',
+        image: images.gallery04,
+      },
+      {
+        label: 'Partner Network',
+        path: '/about-us/partner-network',
+        description: 'Trusted collaborators in decor, fashion, and production.',
+        image: images.gallery05,
+      },
+      {
+        label: 'Service Standards',
+        path: '/about-us/service-standards',
+        description: 'Operational quality and hospitality benchmarks we uphold.',
+        image: images.eventCorporate,
+      },
+    ],
+  },
+};
+
 export const sharedTestimonials = [
   {
     quote:
@@ -54,11 +303,11 @@ export const pageConfigs = {
       description: 'Ultra-elegant wedding venue for timeless ceremonies, curated receptions, and luxury celebrations.',
     },
     hero: {
-      label: 'Luxury Wedding Venue',
-      title: 'Where Your Forever Begins',
-      subtitle: 'Celebrate in an airy, refined estate designed for cinematic vows and unforgettable evenings.',
+      label: 'New York Wedding Estate',
+      title: 'A Wedding Venue Crafted for Forever',
+      subtitle: 'Host your ceremony, reception, and celebration weekend in one refined destination designed for timeless moments.',
       image: images.hero,
-      overlayClass: 'bg-black/28',
+      overlayClass: 'bg-black/44',
       cta: { text: 'Explore Venue', href: '/venue' },
     },
     cta: { text: 'Book A Tour', href: '/contact-us' },
@@ -224,7 +473,7 @@ export const pageConfigs = {
       label: 'Blogs',
       title: 'The Veloura Wedding Journal',
       subtitle: 'Elegant planning intelligence, visual trends, and timeless hosting ideas.',
-      image: images.gallery05,
+      image: images.gallery02,
       overlayClass: 'bg-black/34',
       cta: { text: 'Plan With Us', href: '/contact-us' },
     },
@@ -469,8 +718,8 @@ export const pageConfigs = {
       label: 'Contact Us',
       title: 'Send Us a Request',
       subtitle: 'Share your vision and preferred date. We will respond with tailored next steps.',
-      image: images.gallery05,
-      overlayClass: 'bg-black/33',
+      image: images.indoor,
+      overlayClass: 'bg-black/45',
       cta: { text: 'Call Concierge', href: '/contact-us#direct-contact' },
     },
     cta: { text: 'Send Inquiry', href: '/contact-us#inquiry-form' },
@@ -513,6 +762,57 @@ export const pageConfigs = {
   },
 };
 
+const makeSubpageConfig = (menuLabel, link, previewImage) => ({
+  seo: {
+    title: `${link.label} | Veloura Estate`,
+    description: `${link.description} Discover refined planning, design, and hosting details at Veloura Estate.`,
+  },
+  hero: {
+    label: menuLabel,
+    title: link.label,
+    subtitle: link.description,
+    image: link.image ?? previewImage,
+    overlayClass: 'bg-black/32',
+    cta: { text: 'Book A Tour', href: '/contact-us' },
+  },
+  focus: {
+    title: `Signature ${link.label}`,
+    copy: `Our ${link.label.toLowerCase()} approach blends quiet luxury with precise coordination, creating a polished and memorable guest experience from first impression to final farewell.`,
+    image: link.image ?? previewImage,
+  },
+  details: {
+    title: 'Experience Outline',
+    items: [
+      `Creative direction tailored for ${link.label.toLowerCase()}`,
+      'Guest flow designed for comfort and visual rhythm',
+      'Hospitality choreography aligned with event timing',
+      'Refined styling layers with subtle premium finish',
+    ],
+  },
+  metrics: {
+    title: 'What Makes It Distinct',
+    items: [
+      { value: '01', label: 'Concept-led design planning' },
+      { value: '02', label: 'Calm, elegant execution' },
+      { value: '03', label: 'Luxury hospitality standards' },
+      { value: '04', label: 'Timeless visual storytelling' },
+    ],
+  },
+  cta: {
+    title: `Plan ${link.label} With Veloura Estate`,
+    subtitle: 'Connect with our team to shape a tailored concept around your celebration goals.',
+  },
+});
+
+export const subpageConfigs = Object.values(megaMenuConfig).reduce((acc, menu) => {
+  menu.links.forEach((link) => {
+    acc[link.path] = makeSubpageConfig(menu.title, link, menu.preview.image);
+  });
+  return acc;
+}, {});
+
+export const subpageRoutes = Object.keys(subpageConfigs);
+
 export const routeMeta = {
   '/': pageConfigs.home,
   '/gallery': pageConfigs.gallery,
@@ -522,4 +822,5 @@ export const routeMeta = {
   '/events': pageConfigs.events,
   '/about-us': pageConfigs.about,
   '/contact-us': pageConfigs.contact,
+  ...subpageConfigs,
 };

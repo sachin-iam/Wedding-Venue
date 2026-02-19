@@ -4,7 +4,7 @@ import { makeFadeUp, makeStagger } from '../../utils/motion';
 function TimelineBlock({ items }) {
   const reduceMotion = useReducedMotion();
   const fadeUp = makeFadeUp(reduceMotion);
-  const stagger = makeStagger(0.12, 0.04, reduceMotion);
+  const stagger = makeStagger(0.1, 0.03, reduceMotion);
 
   return (
     <motion.div
@@ -15,10 +15,15 @@ function TimelineBlock({ items }) {
       variants={stagger}
     >
       {items.map((item, idx) => (
-        <motion.article key={item.title} variants={fadeUp} className="rounded-xl border border-borderSoft bg-card p-6 shadow-soft">
-          <p className="text-[12px] uppercase tracking-[0.2em] text-accent">Step {idx + 1}</p>
-          <h3 className="mt-4 font-serif text-[30px] leading-none text-textPrimary">{item.title}</h3>
-          <p className="mt-3 text-[15px] leading-[1.75] text-textBody">{item.copy}</p>
+        <motion.article
+          key={item.title}
+          variants={fadeUp}
+          className="relative border-l border-strokeSoft/55 pl-5 pr-2"
+        >
+          <span className="absolute -left-[5px] top-1 h-2.5 w-2.5 rounded-full bg-gold/75" />
+          <p className="text-[11px] uppercase tracking-[0.22em] text-gold">Step {idx + 1}</p>
+          <h3 className="mt-3 font-serif text-[26px] leading-none text-inkStrong">{item.title}</h3>
+          <p className="mt-2.5 text-[14px] leading-[1.72] text-inkSoft">{item.copy}</p>
         </motion.article>
       ))}
     </motion.div>

@@ -49,29 +49,36 @@ function BlogsPage() {
     <>
       <PageHero hero={config.hero} />
 
-      <section className="section-pad bg-bgPrimary">
+      <section className="section-pad">
         <div className="container-luxe">
-          <SectionHeading label="Featured" title={featuredPost.title} subtitle="Our latest editorial guidance for elevated celebrations." />
+          <SectionHeading
+            label="Featured"
+            title={featuredPost.title}
+            subtitle="Our latest editorial guidance for elevated celebrations."
+            shell="glass"
+          />
+
           <motion.article
-            className="mt-12 grid overflow-hidden rounded-xl border border-borderSoft bg-card shadow-luxe lg:grid-cols-[1.15fr_0.85fr]"
+            className="glass-panel-strong mt-10 grid overflow-hidden rounded-[2rem] border border-strokeSoft/70 lg:grid-cols-[1.15fr_0.85fr]"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeUp}
           >
-            <img src={featuredPost.post.image} alt={featuredPost.post.title} className="h-[380px] w-full object-cover" loading="lazy" />
+            <img src={featuredPost.post.image} alt={featuredPost.post.title} className="h-[390px] w-full object-cover" loading="lazy" />
             <div className="p-8 lg:p-10">
-              <p className="section-label">{featuredPost.post.tag}</p>
-              <h3 className="mt-4 font-serif text-[40px] leading-[1.02]">{featuredPost.post.title}</h3>
-              <p className="mt-5 text-[16px] leading-[1.75] text-textBody">{featuredPost.post.excerpt}</p>
+              <p className="section-label text-gold">{featuredPost.post.tag}</p>
+              <h3 className="mt-4 font-serif text-[33px] leading-[1.03] text-inkStrong">{featuredPost.post.title}</h3>
+              <p className="mt-5 text-[14px] leading-[1.8] text-inkSoft">{featuredPost.post.excerpt}</p>
             </div>
           </motion.article>
         </div>
       </section>
 
-      <section className="section-pad bg-bgAlt">
+      <section className="section-pad">
         <div className="container-luxe">
           <SectionHeading label="Journal" title={postsSection.title} subtitle="Filter stories by planning intent and celebration focus." />
+
           <motion.div
             className="mt-10 flex flex-wrap justify-center gap-3"
             initial="hidden"
@@ -84,10 +91,8 @@ function BlogsPage() {
                 key={topicItem}
                 variants={fadeUp}
                 onClick={() => setTopic(topicItem)}
-                className={`rounded-full border px-5 py-2 text-[11px] uppercase tracking-[0.22em] transition-all duration-300 ${
-                  topic === topicItem
-                    ? 'border-accent bg-accent text-white'
-                    : 'border-borderSoft bg-card text-textPrimary hover:border-accent hover:text-accent'
+                className={`liquid-chip ${
+                  topic === topicItem ? '!border-gold/75 !bg-white/88 !text-gold !shadow-glow' : ''
                 }`}
               >
                 {topicItem}
@@ -96,20 +101,25 @@ function BlogsPage() {
           </motion.div>
 
           <motion.div
-            className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+            className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
             variants={stagger}
           >
             {filteredPosts.map((post) => (
-              <motion.article key={post.title} variants={fadeUp} className="group overflow-hidden rounded-xl bg-card shadow-soft">
+              <motion.article key={post.title} variants={fadeUp} className="group droplet-corner overflow-hidden border border-strokeSoft/65 bg-white/56 shadow-glass">
                 <div className="h-[250px] overflow-hidden">
-                  <img src={post.image} alt={post.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="h-full w-full object-cover transition-transform duration-500 ease-luxe group-hover:scale-105"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="p-6">
-                  <p className="section-label text-accent">{post.tag}</p>
-                  <h3 className="mt-3 font-serif text-[33px] leading-none text-textPrimary">{post.title}</h3>
+                  <p className="section-label text-gold">{post.tag}</p>
+                  <h3 className="mt-3 font-serif text-[27px] leading-none text-inkStrong">{post.title}</h3>
                 </div>
               </motion.article>
             ))}
@@ -117,31 +127,33 @@ function BlogsPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-bgPrimary">
+      <section className="section-pad">
         <div className="container-luxe">
-          <SectionHeading label="Trends" title={trends.title} subtitle="Current directions shaping elegant wedding and event experiences." />
-          <motion.div
-            className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={stagger}
-          >
-            {trends.items.map((item) => (
-              <motion.div key={item} variants={fadeUp} className="rounded-xl border border-borderSoft bg-card px-6 py-6 text-center text-[12px] uppercase tracking-[0.22em] text-textPrimary shadow-soft">
-                {item}
-              </motion.div>
-            ))}
-          </motion.div>
+          <div className="section-shell">
+            <SectionHeading label="Trends" title={trends.title} subtitle="Current directions shaping elegant wedding and event experiences." />
+            <motion.div
+              className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={stagger}
+            >
+              {trends.items.map((item) => (
+                <motion.div key={item} variants={fadeUp} className="liquid-chip !w-full !rounded-2xl !px-5 !py-4 !text-[11px] !text-inkStrong">
+                  {item}
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      <section className="section-pad bg-bgAlt">
+      <section className="section-pad">
         <div className="container-luxe text-center">
-          <SectionHeading label="Newsletter" title={newsletter.title} subtitle={newsletter.subtitle} />
+          <SectionHeading label="Newsletter" title={newsletter.title} subtitle={newsletter.subtitle} shell="glass" />
           <motion.form
             onSubmit={onNewsletterSubmit}
-            className="mx-auto mt-10 flex max-w-xl flex-col gap-4 sm:flex-row"
+            className="glass-panel-strong mx-auto mt-8 flex max-w-2xl flex-col gap-4 rounded-[1.8rem] p-5 sm:flex-row"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
@@ -152,13 +164,16 @@ function BlogsPage() {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               placeholder="Enter your email"
-              className="input-line flex-1 rounded-full border border-borderSoft px-6 py-3"
+              className="input-line flex-1"
             />
-            <button type="submit" className="rounded-full bg-accent px-8 py-3 text-[11px] uppercase tracking-[0.22em] text-white transition-colors duration-300 hover:bg-accentDark">
+            <button
+              type="submit"
+              className="min-h-12 rounded-full border border-gold bg-gold px-8 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-white shadow-[0_10px_26px_rgba(176,141,109,0.22)] transition-all duration-300 ease-luxe hover:border-goldDeep hover:bg-goldDeep"
+            >
               Subscribe
             </button>
           </motion.form>
-          {newsletterMessage ? <p className="mt-4 text-[13px] uppercase tracking-[0.16em] text-accent">{newsletterMessage}</p> : null}
+          {newsletterMessage ? <p className="mt-4 text-[13px] uppercase tracking-[0.16em] text-gold">{newsletterMessage}</p> : null}
         </div>
       </section>
 

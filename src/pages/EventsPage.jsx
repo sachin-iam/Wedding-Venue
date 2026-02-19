@@ -27,26 +27,28 @@ function EventsPage() {
     <>
       <PageHero hero={config.hero} />
 
-      <section className="section-pad bg-bgPrimary">
+      <section className="section-pad">
         <div className="container-luxe">
-          <SectionHeading label="Event Types" title={eventCards.title} subtitle="Three hosting formats delivered with the same polished standard." />
+          <SectionHeading label="Event Types" title={eventCards.title} subtitle="Three hosting formats delivered with the same polished standard." shell="glass" />
+
           <motion.div
-            className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+            className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.15 }}
             variants={stagger}
           >
             {eventCards.items.map((item) => (
-              <ImageCard key={item.title} item={item} aspect="h-[320px]" />
+              <ImageCard key={item.title} item={item} aspect="h-[340px]" />
             ))}
           </motion.div>
         </div>
       </section>
 
-      <section className="section-pad bg-bgAlt">
+      <section className="section-pad">
         <div className="container-luxe">
           <SectionHeading label="Packages" title={tiers.title} subtitle="Select the level of production depth for your event needs." />
+
           <motion.div
             className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3"
             initial="hidden"
@@ -55,26 +57,32 @@ function EventsPage() {
             variants={stagger}
           >
             {tiers.items.map((tier) => (
-              <motion.article key={tier.title} variants={fadeUp} className="rounded-xl border border-borderSoft bg-card p-7 shadow-soft">
-                <h3 className="font-serif text-[36px] leading-none text-textPrimary">{tier.title}</h3>
-                <span className="mt-4 block h-[1px] w-16 bg-accent" />
-                <p className="mt-4 text-[15px] leading-[1.75] text-textBody">{tier.copy}</p>
+              <motion.article key={tier.title} variants={fadeUp} className="droplet-corner border border-strokeSoft/70 bg-white/62 p-7 shadow-glass">
+                <h3 className="font-serif text-[26px] leading-none text-inkStrong">{tier.title}</h3>
+                <span className="gold-hairline mt-4 block" />
+                <p className="mt-4 text-[14px] leading-[1.75] text-inkSoft">{tier.copy}</p>
               </motion.article>
             ))}
           </motion.div>
         </div>
       </section>
 
-      <section className="section-pad bg-bgPrimary">
+      <section className="section-pad">
         <div className="container-luxe">
           <SectionHeading label="Process" title={timeline.title} subtitle="A concise planning framework from inquiry to live execution." />
           <TimelineBlock items={timeline.items} />
         </div>
       </section>
 
-      <section className="section-pad bg-bgAlt">
+      <section className="section-pad">
         <div className="container-luxe">
-          <SectionHeading label="Gallery Rail" title={galleryRail.title} subtitle="A horizontal stream of hosted event atmosphere and detail moments." />
+          <SectionHeading
+            label="Gallery Rail"
+            title={galleryRail.title}
+            subtitle="A horizontal stream of hosted event atmosphere and detail moments."
+            shell="glass"
+          />
+
           <motion.div
             className="mt-10 flex snap-x gap-4 overflow-x-auto pb-2"
             initial="hidden"
@@ -83,7 +91,7 @@ function EventsPage() {
             variants={stagger}
           >
             {galleryRail.items.map((image, idx) => (
-              <motion.div key={`${image}-${idx}`} variants={fadeUp} className="snap-start overflow-hidden rounded-xl bg-card shadow-soft">
+              <motion.div key={`${image}-${idx}`} variants={fadeUp} className="snap-start droplet-corner overflow-hidden border border-strokeSoft/70 bg-white/55 shadow-glass">
                 <img src={image} alt={`Event gallery ${idx + 1}`} className="h-72 w-[280px] object-cover sm:w-[320px]" loading="lazy" />
               </motion.div>
             ))}
@@ -91,7 +99,7 @@ function EventsPage() {
         </div>
       </section>
 
-      <section className="section-pad bg-bgPrimary">
+      <section className="section-pad">
         <div className="container-luxe">
           <SectionHeading label="Client Notes" title={quotes.title} subtitle="Feedback from private and corporate hosts." />
           <motion.div
@@ -102,7 +110,11 @@ function EventsPage() {
             variants={stagger}
           >
             {quotes.items.map((quote) => (
-              <motion.blockquote key={quote} variants={fadeUp} className="rounded-xl border border-borderSoft bg-card p-8 font-serif text-[35px] italic leading-[1.32] text-textPrimary shadow-soft">
+              <motion.blockquote
+                key={quote}
+                variants={fadeUp}
+                className="droplet-corner border border-strokeSoft/70 bg-white/62 p-8 font-serif text-[26px] italic leading-[1.35] text-inkStrong shadow-glass sm:text-[35px]"
+              >
                 "{quote}"
               </motion.blockquote>
             ))}

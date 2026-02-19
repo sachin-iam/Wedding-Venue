@@ -1,17 +1,19 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { X } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { ChevronDown, X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { navItems } from '../data/pageConfigs';
+import { megaMenuConfig, navItems } from '../data/pageConfigs';
 
 function SidePanel({ isOpen, onClose }) {
   const panelRef = useRef(null);
   const closeButtonRef = useRef(null);
   const previousFocused = useRef(null);
   const reducedMotion = useReducedMotion();
+  const [expandedMenu, setExpandedMenu] = useState(null);
 
   useEffect(() => {
     if (!isOpen) {
+      setExpandedMenu(null);
       return undefined;
     }
 
@@ -59,23 +61,34 @@ function SidePanel({ isOpen, onClose }) {
 
   const panelTransition = reducedMotion
     ? { duration: 0.2, ease: 'linear' }
-    : { duration: 0.6, ease: [0.4, 0, 0.2, 1] };
+    : { duration: 0.52, ease: [0.22, 1, 0.36, 1] };
+
+  const toggleAccordion = (label) => {
+    setExpandedMenu((prev) => (prev === label ? null : label));
+  };
+
+  const venueDetails = [
+    { label: 'Address', value: '198 West 21st Street, New York, NY' },
+    { label: 'Phone', value: '+1 234-567-8910' },
+    { label: 'Email', value: 'concierge@velouraestate.com' },
+    { label: 'Hours', value: 'Mon - Sat, 9:00 AM - 7:00 PM' },
+  ];
 
   return (
     <AnimatePresence>
       {isOpen ? (
         <>
           <motion.div
-            className="fixed inset-0 z-40 bg-black/30"
+            className="fixed inset-0 z-40 bg-[#1f160d]/45 backdrop-blur-xs"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } }}
-            exit={{ opacity: 0, transition: { duration: 0.3, ease: 'easeOut' } }}
+            animate={{ opacity: 1, transition: { duration: 0.28, ease: 'easeOut' } }}
+            exit={{ opacity: 0, transition: { duration: 0.24, ease: 'easeOut' } }}
             onClick={onClose}
           />
 
           <motion.aside
             ref={panelRef}
-            className="fixed right-0 top-0 z-50 h-full w-full overflow-y-auto bg-bgPrimary px-8 pb-10 pt-8 sm:w-[400px] sm:px-10"
+            className="fixed right-0 top-0 z-50 h-full w-full overflow-y-auto rounded-l-[2rem] border-l border-strokeSoft/70 bg-white/78 px-8 pb-10 pt-8 shadow-deep backdrop-blur-2xl sm:w-[420px] sm:px-10 xl:w-[500px] xl:px-11"
             initial={{ x: '100%' }}
             animate={{ x: 0, transition: panelTransition }}
             exit={{ x: '100%', transition: panelTransition }}
@@ -87,77 +100,139 @@ function SidePanel({ isOpen, onClose }) {
               ref={closeButtonRef}
               onClick={onClose}
               aria-label="Close menu panel"
-              className="ml-auto flex h-10 w-10 items-center justify-center rounded-full border border-borderSoft text-textPrimary transition-colors duration-300 hover:border-accent hover:text-accent"
+              className="ml-auto flex min-h-11 min-w-11 items-center justify-center rounded-full border border-strokeSoft/70 text-inkStrong transition-all duration-300 ease-luxe hover:border-gold/70 hover:text-gold"
             >
-              <X size={18} strokeWidth={1.6} />
+              <X size={18} strokeWidth={1.7} />
             </button>
 
             <div className="relative mt-8 pb-16">
-              <div className="flex h-36 w-36 items-center justify-center rounded-full border border-borderSoft text-center">
+              <div className="glass-panel mx-auto flex h-36 w-36 items-center justify-center rounded-full text-center">
                 <div>
                   <p className="section-label">Wedding Theme</p>
-                  <p className="mt-2 font-serif text-4xl leading-none">Bisou</p>
-                  <p className="mt-2 text-[10px] uppercase tracking-[0.3em] text-textMuted">Celebrating Love</p>
+                  <p className="mt-2 font-serif text-4xl leading-none text-inkStrong">Veloura</p>
+                  <p className="mt-2 text-[10px] uppercase tracking-[0.3em] text-inkSoft/75">Celebrating Love</p>
                 </div>
               </div>
 
-              <p className="mt-10 font-serif text-[42px] leading-[1.05] text-textPrimary">An Estate Crafted for Forever</p>
-              <p className="mt-4 text-[17px] leading-[1.7] text-textBody">
+              <p className="mt-10 font-serif text-[36px] leading-[1.05] text-inkStrong">An Estate Crafted for Forever</p>
+              <p className="mt-4 text-[14px] leading-[1.7] text-inkSoft">
                 A private luxury setting where ceremony, celebration, and hospitality blend into one refined wedding experience.
               </p>
 
-              <ul className="mt-8 grid grid-cols-2 gap-x-4 gap-y-3">
-                {navItems.map((item) => (
-                  <li key={item.path}>
-                    <NavLink
-                      to={item.path}
-                      onClick={onClose}
-                      className={({ isActive }) =>
-                        `text-[12px] uppercase tracking-[0.2em] transition-colors duration-300 ${
-                          isActive ? 'text-accent' : 'text-textPrimary hover:text-accent'
-                        }`
-                      }
-                    >
-                      {item.label}
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
+              <div className="mt-8 space-y-3 xl:hidden">
+                {navItems.map((item) => {
+                  const menuConfig = megaMenuConfig[item.label];
+                  const isExpanded = expandedMenu === item.label;
 
-              <div className="mt-10">
-                <p className="text-[13px] uppercase tracking-[0.22em] text-textPrimary">Wedding Details</p>
-                <div className="mt-5 space-y-3 text-[16px] leading-[1.7] text-textBody">
-                  <p>
-                    <span className="mr-2 text-[12px] uppercase tracking-[0.18em] text-textMuted">Date</span>
-                    Sunday, 05 September 2026
-                  </p>
-                  <p>
-                    <span className="mr-2 text-[12px] uppercase tracking-[0.18em] text-textMuted">Time</span>
-                    2:00 PM - 3:30 PM
-                  </p>
-                  <p>
-                    <span className="mr-2 text-[12px] uppercase tracking-[0.18em] text-textMuted">Address</span>
-                    198 West 21st Street, NY
-                  </p>
-                  <p>
-                    <span className="mr-2 text-[12px] uppercase tracking-[0.18em] text-textMuted">Phone</span>
-                    +1 234-567-8910
-                  </p>
-                </div>
-                <NavLink
-                  to="/contact-us"
-                  onClick={onClose}
-                  className="mt-6 inline-block border-b border-accent pb-1 text-[24px] font-serif italic text-accent transition-colors duration-300 hover:text-accentDark"
-                >
-                  RSVP
-                </NavLink>
+                  if (!menuConfig) {
+                    return (
+                      <NavLink
+                        key={item.path}
+                        to={item.path}
+                        onClick={onClose}
+                        className={({ isActive }) =>
+                          `liquid-chip !w-full !justify-start !rounded-2xl !px-4 !text-[11px] ${
+                            isActive ? '!border-gold/75 !bg-white/85 !text-gold' : ''
+                          }`
+                        }
+                      >
+                        {item.label}
+                      </NavLink>
+                    );
+                  }
+
+                  return (
+                    <div key={item.path} className="rounded-2xl border border-strokeSoft/70 bg-white/55">
+                      <button
+                        type="button"
+                        onClick={() => toggleAccordion(item.label)}
+                        className="flex w-full items-center justify-between px-4 py-3 text-left text-[11px] uppercase tracking-[0.2em] text-inkStrong"
+                      >
+                        <span>{item.label}</span>
+                        <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${isExpanded ? 'rotate-180 text-gold' : ''}`} />
+                      </button>
+
+                      <AnimatePresence>
+                        {isExpanded ? (
+                          <motion.div
+                            initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 14 }}
+                            animate={
+                              reducedMotion
+                                ? { opacity: 1, transition: { duration: 0.2, ease: 'linear' } }
+                                : { opacity: 1, y: 0, transition: { duration: 0.34, ease: 'easeOut' } }
+                            }
+                            exit={
+                              reducedMotion
+                                ? { opacity: 0 }
+                                : { opacity: 0, y: 10, transition: { duration: 0.22, ease: 'easeOut' } }
+                            }
+                            className="space-y-2 px-4 pb-4"
+                          >
+                            <NavLink
+                              to={item.path}
+                              onClick={onClose}
+                              className="liquid-chip !w-full !justify-start !rounded-xl !px-3 !py-2 !text-[10px]"
+                            >
+                              All {item.label}
+                            </NavLink>
+
+                            {menuConfig.links.map((link) => (
+                              <NavLink
+                                key={link.path}
+                                to={link.path}
+                                onClick={onClose}
+                                className="block rounded-xl border border-transparent bg-white/30 px-3 py-2 transition-all duration-300 ease-luxe hover:border-gold/30 hover:bg-white/80"
+                              >
+                                <p className="font-serif text-[23px] leading-none text-inkStrong">{link.label}</p>
+                                <p className="mt-1 text-[12px] leading-[1.45] text-inkSoft">{link.description}</p>
+                              </NavLink>
+                            ))}
+                          </motion.div>
+                        ) : null}
+                      </AnimatePresence>
+                    </div>
+                  );
+                })}
               </div>
 
-              <p className="mt-10 font-serif text-[38px] italic text-textPrimary">@veloura_day</p>
-              <p className="mt-5 text-[14px] font-medium uppercase tracking-[0.18em] text-textPrimary">IG - FB - YT</p>
+              <div className="glass-panel mt-9 rounded-[1.7rem] p-6 xl:mt-8">
+                <p className="text-[13px] uppercase tracking-[0.22em] text-inkStrong">Venue Contact</p>
+                <div className="mt-5 space-y-3.5 text-[14px] leading-[1.7] text-inkSoft">
+                  {venueDetails.map((item) => (
+                    <p key={item.label}>
+                      <span className="mr-2 text-[12px] uppercase tracking-[0.18em] text-gold">{item.label}</span>
+                      {item.value}
+                    </p>
+                  ))}
+                </div>
+                <div className="mt-7 flex flex-wrap items-center gap-3">
+                  <a
+                    href="tel:+12345678910"
+                    className="liquid-chip !min-h-10 !rounded-xl !px-4 !text-[10px]"
+                  >
+                    Call Venue
+                  </a>
+                  <a
+                    href="https://maps.google.com/?q=198+West+21st+Street,+New+York,+NY"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="liquid-chip !min-h-10 !rounded-xl !px-4 !text-[10px]"
+                  >
+                    Get Directions
+                  </a>
+                </div>
+              </div>
+
+              <div className="mt-9 rounded-2xl border border-strokeSoft/60 bg-white/55 p-5 xl:mt-7">
+                <p className="text-[11px] uppercase tracking-[0.2em] text-gold">Venue Concierge</p>
+                <p className="mt-3 font-serif text-[27px] leading-none text-inkStrong">Veloura Estate</p>
+                <p className="mt-2 text-[13px] leading-[1.6] text-inkSoft">
+                  Dedicated assistance for tours, availability, and tailored wedding planning support.
+                </p>
+              </div>
 
               <svg
-                className="pointer-events-none absolute -bottom-2 right-0 h-52 w-40 text-accent opacity-5"
+                className="pointer-events-none absolute -bottom-2 right-0 h-52 w-40 text-gold/35 opacity-30"
                 viewBox="0 0 220 340"
                 fill="none"
                 aria-hidden="true"

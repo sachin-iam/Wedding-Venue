@@ -27,71 +27,97 @@ function OurMenusPage() {
     <>
       <PageHero hero={config.hero} />
 
-      <section className="section-pad bg-bgPrimary">
-        <div className="container-luxe grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp}>
-            <p className="section-label">Philosophy</p>
-            <h2 className="mt-4 font-serif text-[44px] leading-[1.03] sm:text-[58px]">{philosophy.title}</h2>
-            <p className="mt-5 max-w-xl text-[17px] leading-[1.8] text-textBody">{philosophy.copy}</p>
-          </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp} className="overflow-hidden rounded-xl shadow-soft">
-            <img src={collections.items[1].image} alt="Menu philosophy" className="h-[420px] w-full object-cover" loading="lazy" />
+      <section className="section-pad">
+        <div className="container-luxe">
+          <motion.div
+            className="glass-panel-strong grid gap-8 p-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:p-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp}>
+              <p className="section-label">Philosophy</p>
+              <h2 className="mt-4 font-serif text-[36px] leading-[1.03] text-inkStrong sm:text-[48px]">{philosophy.title}</h2>
+              <p className="mt-5 max-w-xl text-[14px] leading-[1.85] text-inkSoft">{philosophy.copy}</p>
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="droplet-corner overflow-hidden border border-strokeSoft/70">
+              <img src={collections.items[1].image} alt="Menu philosophy" className="h-[420px] w-full object-cover" loading="lazy" />
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      <section className="section-pad bg-bgAlt">
+      <section className="section-pad">
         <div className="container-luxe">
-          <SectionHeading label="Collections" title={collections.title} subtitle="Three distinct culinary directions to match your celebration rhythm." />
+          <SectionHeading
+            label="Collections"
+            title={collections.title}
+            subtitle="Three distinct culinary directions to match your celebration rhythm."
+            shell="glass"
+          />
+
           <motion.div
-            className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+            className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.15 }}
             variants={stagger}
           >
             {collections.items.map((item) => (
-              <ImageCard key={item.title} item={item} className="shadow-soft" />
+              <ImageCard key={item.title} item={item} />
             ))}
           </motion.div>
         </div>
       </section>
 
-      <section className="section-pad bg-bgPrimary">
+      <section className="section-pad">
         <div className="container-luxe">
-          <SectionHeading label="Tasting Journey" title={timeline.title} subtitle="A structured process from first consultation to final menu lock." />
+          <SectionHeading
+            label="Tasting Journey"
+            title={timeline.title}
+            subtitle="A structured process from first consultation to final menu lock."
+          />
           <TimelineBlock items={timeline.items} />
         </div>
       </section>
 
-      <section className="section-pad bg-bgAlt">
+      <section className="section-pad">
         <div className="container-luxe">
-          <SectionHeading label="Pairings" title={pairings.title} subtitle="Layered beverage and dessert moments for a complete reception story." />
-          <motion.ul
-            className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-2"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={stagger}
-          >
-            {pairings.items.map((item) => (
-              <motion.li key={item} variants={fadeUp} className="rounded-xl border border-borderSoft bg-card px-6 py-5 text-[15px] uppercase tracking-[0.15em] text-textPrimary shadow-soft">
-                {item}
-              </motion.li>
-            ))}
-          </motion.ul>
+          <div className="section-shell">
+            <SectionHeading
+              label="Pairings"
+              title={pairings.title}
+              subtitle="Layered beverage and dessert moments for a complete reception story."
+            />
+            <motion.ul
+              className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-2"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={stagger}
+            >
+              {pairings.items.map((item) => (
+                <motion.li key={item} variants={fadeUp} className="liquid-chip !justify-start !rounded-2xl !px-5 !py-4 !text-[11px] !text-inkStrong">
+                  {item}
+                </motion.li>
+              ))}
+            </motion.ul>
+          </div>
         </div>
       </section>
 
-      <section className="section-pad bg-bgPrimary">
-        <div className="container-luxe grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp} className="overflow-hidden rounded-xl shadow-soft">
+      <section className="section-pad">
+        <div className="container-luxe grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp} className="droplet-corner overflow-hidden border border-strokeSoft/70 bg-white/58 shadow-glass">
             <img src={chef.image} alt={chef.title} className="h-[420px] w-full object-cover" loading="lazy" />
           </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp}>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp} className="section-shell text-left">
             <p className="section-label">Chef Curation</p>
-            <h2 className="mt-4 font-serif text-[44px] leading-[1.03] sm:text-[58px]">{chef.title}</h2>
-            <p className="mt-5 max-w-xl text-[17px] leading-[1.8] text-textBody">{chef.copy}</p>
+            <h2 className="mt-4 font-serif text-[36px] leading-[1.03] text-inkStrong sm:text-[48px]">{chef.title}</h2>
+            <p className="mt-5 max-w-xl text-[14px] leading-[1.85] text-inkSoft">{chef.copy}</p>
           </motion.div>
         </div>
       </section>

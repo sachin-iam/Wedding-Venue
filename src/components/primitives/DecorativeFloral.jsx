@@ -1,7 +1,7 @@
 function DecorativeFloral({ className = '' }) {
   return (
     <svg
-      className={`pointer-events-none absolute text-accent opacity-5 ${className}`}
+      className={`pointer-events-none absolute text-gold/35 ${className}`}
       viewBox="0 0 220 340"
       fill="none"
       aria-hidden="true"

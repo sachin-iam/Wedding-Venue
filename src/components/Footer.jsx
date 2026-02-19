@@ -1,84 +1,113 @@
+import { useId } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { ChevronUp } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
+import { navItems } from '../data/pageConfigs';
 import { makeFadeUp, makeStagger } from '../utils/motion';
 
-const quickLinks = [
-  { label: 'Home', path: '/' },
-  { label: 'Gallery', path: '/gallery' },
-  { label: 'Venue', path: '/venue' },
-  { label: 'Events', path: '/events' },
-  { label: 'Contact Us', path: '/contact-us' },
-];
-
-const socials = [
-  { label: 'Instagram', path: '/gallery' },
-  { label: 'Facebook', path: '/about-us' },
-  { label: 'YouTube', path: '/events' },
-  { label: 'Pinterest', path: '/our-menus' },
+const footerColumns = [
+  {
+    title: 'VENUE INFO',
+    items: ['198 West 21st Street, New York, NY', '+1 234-567-8910', 'concierge@velouraestate.com'],
+  },
+  {
+    title: 'QUICK LINKS',
+    links: navItems,
+  },
+  {
+    title: 'WEDDING SERVICES',
+    items: ['Venue Tours', 'Ceremony Planning', 'Reception Styling', 'Catering & Menus'],
+  },
+  {
+    title: 'SUPPORT',
+    items: ['Mon - Sat: 9:00 AM - 7:00 PM', 'Private event inquiries', 'Dedicated planner assistance'],
+  },
 ];
 
 function Footer() {
+  const ringId = useId();
   const reduceMotion = useReducedMotion();
   const fadeUp = makeFadeUp(reduceMotion);
-  const stagger = makeStagger(0.1, 0, reduceMotion);
+  const stagger = makeStagger(0.08, 0, reduceMotion);
 
   return (
-    <footer className="bg-bgPrimary pb-10 pt-16">
-      <motion.div
-        className="container-luxe"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.25 }}
-        variants={stagger}
-      >
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          <motion.div variants={fadeUp}>
-            <h3 className="text-[12px] uppercase tracking-[0.24em] text-textPrimary">About</h3>
-            <p className="mt-5 text-[15px] leading-[1.8] text-textMuted">
-              Veloura Estate is a private destination for intimate and grand luxury weddings, designed for timeless ceremony and refined hospitality.
-            </p>
+    <footer className="relative mt-[42px] border-t border-strokeSoft/40 bg-[#fdfbf7] pb-[26px] pt-[78px] md:pt-[88px]">
+      <div className="relative mx-auto w-full max-w-[1560px] px-4 sm:px-[21px] lg:px-[42px]">
+        <motion.div
+          className="relative pb-[26px]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.22 }}
+          variants={stagger}
+        >
+          <motion.div
+            variants={fadeUp}
+            className="relative mx-auto -mt-[135px] flex h-[114px] w-[114px] items-center justify-center rounded-full border border-strokeSoft/35 bg-[#fffaf2] text-center md:-mt-[145px]"
+          >
+            <svg viewBox="0 0 220 220" className="absolute inset-0 h-full w-full" aria-hidden="true">
+              <defs>
+                <path id={`${ringId}-top`} d="M 34 110 A 76 76 0 0 1 186 110" />
+                <path id={`${ringId}-bottom`} d="M 186 110 A 76 76 0 0 1 34 110" />
+              </defs>
+              <text fill="rgba(20,20,20,0.62)" fontFamily="'Manrope', sans-serif" fontSize="6.6" letterSpacing="3.2">
+                <textPath href={`#${ringId}-top`} startOffset="50%" textAnchor="middle">
+                  WEDDING THEME
+                </textPath>
+              </text>
+              <text fill="rgba(20,20,20,0.62)" fontFamily="'Manrope', sans-serif" fontSize="6.6" letterSpacing="2.8">
+                <textPath href={`#${ringId}-bottom`} startOffset="50%" textAnchor="middle">
+                  CELEBRATING LOVE
+                </textPath>
+              </text>
+            </svg>
+
+            <span className="absolute left-[16px] top-1/2 -translate-y-1/2 text-[10px] text-inkStrong/60">•</span>
+            <span className="absolute right-[16px] top-1/2 -translate-y-1/2 text-[10px] text-inkStrong/60">•</span>
+            <p className="relative z-10 font-serif text-[46px] leading-none text-inkStrong">Veloura</p>
           </motion.div>
 
-          <motion.div variants={fadeUp}>
-            <h3 className="text-[12px] uppercase tracking-[0.24em] text-textPrimary">Quick Links</h3>
-            <ul className="mt-5 space-y-3 text-[15px] text-textMuted">
-              {quickLinks.map((item) => (
-                <li key={item.path}>
-                  <NavLink to={item.path} className="transition-colors duration-300 hover:text-accent">
-                    {item.label}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+          <div className="relative z-10 mt-9 grid gap-x-[26px] gap-y-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-x-[62px]">
+            {footerColumns.map((column) => (
+              <motion.div key={column.title} variants={fadeUp}>
+                <h3 className="text-[10px] font-normal uppercase tracking-[0.3em] text-inkStrong/90">{column.title}</h3>
+                {column.links ? (
+                  <ul className="mt-[10px] space-y-[5px] text-[14px] font-light leading-[1.56] text-inkSoft">
+                    {column.links.map((item) => (
+                      <li key={item.path}>
+                        <NavLink to={item.path} className="font-light transition-colors duration-300 hover:text-gold">
+                          {item.label}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <ul className="mt-[10px] space-y-[5px] text-[14px] font-light leading-[1.56] text-inkSoft">
+                    {column.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                )}
+              </motion.div>
+            ))}
+          </div>
 
-          <motion.div variants={fadeUp}>
-            <h3 className="text-[12px] uppercase tracking-[0.24em] text-textPrimary">Venue Info</h3>
-            <ul className="mt-5 space-y-3 text-[15px] text-textMuted">
-              <li>198 West 21st Street, New York, NY</li>
-              <li>+1 234-567-8910</li>
-              <li>concierge@velouraestate.com</li>
-            </ul>
+          <motion.div
+            variants={fadeUp}
+            className="relative z-10 mt-[26px] border-t border-strokeSoft/45 pt-[18px] text-center text-[10px] font-light text-inkSoft sm:text-[11px]"
+          >
+            Privacy Policy - Terms - ©2026 Veloura Estate. All Rights Reserved.
           </motion.div>
-
-          <motion.div variants={fadeUp}>
-            <h3 className="text-[12px] uppercase tracking-[0.24em] text-textPrimary">Social</h3>
-            <ul className="mt-5 space-y-3 text-[15px] text-textMuted">
-              {socials.map((item) => (
-                <li key={item.label}>
-                  <NavLink to={item.path} className="transition-colors duration-300 hover:text-accent">
-                    {item.label}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
-
-        <motion.div variants={fadeUp} className="mt-14 text-center text-[13px] text-textMuted">
-          © 2026 Veloura Estate. All rights reserved.
         </motion.div>
-      </motion.div>
+      </div>
+
+      <button
+        type="button"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Back to top"
+        className="absolute bottom-[21px] right-[18px] inline-flex h-9 w-9 items-center justify-center border border-inkStrong/45 bg-transparent text-inkStrong transition-colors duration-300 hover:border-gold hover:text-gold"
+      >
+        <ChevronUp size={12} strokeWidth={1.9} />
+      </button>
     </footer>
   );
 }

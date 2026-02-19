@@ -8,7 +8,9 @@ import GalleryPage from './pages/GalleryPage';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import OurMenusPage from './pages/OurMenusPage';
+import SubpageTemplate from './pages/SubpageTemplate';
 import VenuePage from './pages/VenuePage';
+import { subpageConfigs, subpageRoutes } from './data/pageConfigs';
 
 function App() {
   return (
@@ -22,6 +24,11 @@ function App() {
         <Route path="/events" element={<EventsPage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/contact-us" element={<ContactUsPage />} />
+
+        {subpageRoutes.map((path) => (
+          <Route key={path} path={path} element={<SubpageTemplate config={subpageConfigs[path]} />} />
+        ))}
+
         <Route path="/home" element={<Navigate to="/" replace />} />
       </Route>
       <Route path="*" element={<NotFoundPage />} />

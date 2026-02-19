@@ -97,7 +97,7 @@ function InquiryForm({ id = 'inquiry-form' }) {
   return (
     <motion.form
       id={id}
-      className="mx-auto mt-12 grid max-w-4xl gap-8 md:grid-cols-2"
+      className="glass-panel-strong mx-auto mt-12 grid max-w-4xl gap-7 p-6 md:grid-cols-2 md:p-9"
       onSubmit={handleSubmit}
       initial="hidden"
       whileInView="visible"
@@ -106,10 +106,10 @@ function InquiryForm({ id = 'inquiry-form' }) {
       noValidate
     >
       {fieldDefs.map((field) => (
-        <label key={field.key} className="text-left text-sm text-textBody">
-          <span className="mb-3 block text-[13px] uppercase tracking-[0.16em] text-textMuted">{field.label}</span>
+        <label key={field.key} className="text-left text-sm text-inkSoft">
+          <span className="mb-3 block text-[12px] uppercase tracking-[0.16em] text-inkSoft/75">{field.label}</span>
           <input
-            className="input-line transition-all duration-300"
+            className="input-line"
             type={field.type}
             name={field.key}
             value={formData[field.key]}
@@ -120,17 +120,17 @@ function InquiryForm({ id = 'inquiry-form' }) {
             aria-describedby={errors[field.key] ? `${field.key}-error` : undefined}
           />
           {errors[field.key] ? (
-            <span id={`${field.key}-error`} className="mt-2 block text-xs text-[#a35f4d]">
+            <span id={`${field.key}-error`} className="mt-2 block text-xs text-[#9a4f3c]">
               {errors[field.key]}
             </span>
           ) : null}
         </label>
       ))}
 
-      <label className="text-left text-sm text-textBody md:col-span-2">
-        <span className="mb-3 block text-[13px] uppercase tracking-[0.16em] text-textMuted">Message</span>
+      <label className="text-left text-sm text-inkSoft md:col-span-2">
+        <span className="mb-3 block text-[12px] uppercase tracking-[0.16em] text-inkSoft/75">Message</span>
         <textarea
-          className="input-line min-h-28 resize-none transition-all duration-300"
+          className="input-line min-h-32 resize-none"
           name="message"
           value={formData.message}
           onChange={handleChange}
@@ -139,36 +139,34 @@ function InquiryForm({ id = 'inquiry-form' }) {
           aria-describedby={errors.message ? 'message-error' : undefined}
         />
         {errors.message ? (
-          <span id="message-error" className="mt-2 block text-xs text-[#a35f4d]">
+          <span id="message-error" className="mt-2 block text-xs text-[#9a4f3c]">
             {errors.message}
           </span>
         ) : null}
       </label>
 
-      <div className="md:col-span-2 text-center">
+      <div className="md:col-span-2 flex flex-wrap items-center justify-center gap-4">
         <button
           type="submit"
-          className="rounded-full bg-accent px-10 py-3 text-[12px] uppercase tracking-[0.22em] text-white transition-colors duration-300 hover:bg-accentDark"
+          className="inline-flex min-h-12 items-center justify-center rounded-full border border-gold bg-gold px-10 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-white shadow-[0_10px_26px_rgba(176,141,109,0.22)] transition-all duration-300 ease-luxe hover:border-goldDeep hover:bg-goldDeep"
         >
           Send Message
         </button>
+
+        <CTAButton to="/venue" tone="ghost" size="md">
+          Explore Venue Spaces
+        </CTAButton>
       </div>
 
       {isSubmitted ? (
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }}
-          className="md:col-span-2 text-center text-[14px] uppercase tracking-[0.18em] text-accent"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } }}
+          className="md:col-span-2 text-center text-[13px] uppercase tracking-[0.18em] text-gold"
         >
           Inquiry sent. Our concierge team will contact you shortly.
         </motion.p>
       ) : null}
-
-      <div className="md:col-span-2 text-center">
-        <CTAButton to="/venue" variant="ghost" className="mt-2">
-          Explore Venue Spaces
-        </CTAButton>
-      </div>
     </motion.form>
   );
 }
