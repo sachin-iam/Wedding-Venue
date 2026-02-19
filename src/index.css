@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #1c1c1c;
+  background-color: #f6f3ef;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f6f3ef;
+  color: #1c1c1c;
+  font-family: Inter, sans-serif;
+  text-rendering: geometricPrecision;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+section[id] {
+  scroll-margin-top: 108px;
+}
+
+::selection {
+  background: rgba(176, 141, 109, 0.18);
+  color: #1c1c1c;
+}
+
+@layer components {
+  .container-luxe {
+    @apply mx-auto w-full max-w-content px-5 md:px-8;
+  }
+
+  .section-pad {
+    @apply py-16 md:py-24;
+  }
+
+  .section-label {
+    @apply text-[12px] uppercase tracking-[0.3em] text-textMuted;
+  }
+
+  .nav-link {
+    @apply relative inline-flex items-center whitespace-nowrap text-[11px] uppercase tracking-[0.18em] leading-none transition-colors duration-300 xl:text-[12px];
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-[5px] left-1/2 h-px w-0 -translate-x-1/2 bg-accent transition-all duration-[350ms];
+  }
+
+  .nav-link:hover::after,
+  .nav-link-active::after {
+    @apply w-full;
+  }
+
+  .input-line {
+    @apply w-full border-0 border-b border-borderSoft bg-transparent pb-3 text-[16px] text-textPrimary placeholder:text-textMuted focus:border-accent focus:outline-none;
+  }
+
+  .floral-float {
+    animation: floralFloat 9s ease-in-out infinite;
+  }
+}
+
+@keyframes floralFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floral-float {
+    animation: none;
+  }
+}
