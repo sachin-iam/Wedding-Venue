@@ -31,7 +31,7 @@ function Footer() {
   const stagger = makeStagger(0.08, 0, reduceMotion);
 
   return (
-    <footer className="relative mt-[42px] border-t border-strokeSoft/40 bg-[#fdfbf7] pb-[26px] pt-[78px] md:pt-[88px]">
+    <footer className="relative mt-[42px] border-t border-strokeSoft/60 bg-[linear-gradient(180deg,#eef4fd_0%,#e8f0fb_58%,#e3ecf8_100%)] pb-[26px] pt-[78px] shadow-[0_-10px_36px_rgba(86,112,145,0.08)] md:pt-[88px]">
       <div className="relative mx-auto w-full max-w-[1560px] px-4 sm:px-[21px] lg:px-[42px]">
         <motion.div
           className="relative pb-[26px]"
@@ -42,7 +42,7 @@ function Footer() {
         >
           <motion.div
             variants={fadeUp}
-            className="relative mx-auto -mt-[135px] flex h-[114px] w-[114px] items-center justify-center rounded-full border border-strokeSoft/35 bg-[#fffaf2] text-center md:-mt-[145px]"
+            className="relative mx-auto -mt-[135px] flex h-[114px] w-[114px] items-center justify-center rounded-full border border-strokeSoft/55 bg-[#f6f9ff] text-center md:-mt-[145px]"
           >
             <svg viewBox="0 0 220 220" className="absolute inset-0 h-full w-full" aria-hidden="true">
               <defs>
@@ -93,7 +93,7 @@ function Footer() {
 
           <motion.div
             variants={fadeUp}
-            className="relative z-10 mt-[26px] border-t border-strokeSoft/45 pt-[18px] text-center text-[10px] font-light text-inkSoft sm:text-[11px]"
+            className="relative z-10 mt-[26px] border-t border-strokeSoft/60 pt-[18px] text-center text-[10px] font-light text-inkSoft sm:text-[11px]"
           >
             Privacy Policy - Terms - ©2026 Veloura Estate. All Rights Reserved.
           </motion.div>

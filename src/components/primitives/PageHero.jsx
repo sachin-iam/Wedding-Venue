@@ -15,7 +15,7 @@ function PageHero({ hero, isHome = false, showGlassStats = isHome }) {
         <img
           src={hero.image}
           alt={hero.title}
-          className="h-full w-full object-cover"
+          className={`h-full w-full object-cover ${isHome ? 'lg:scale-[1.18] lg:object-[78%_center]' : ''}`}
           loading={isHome ? 'eager' : 'lazy'}
           fetchPriority={isHome ? 'high' : 'auto'}
         />
@@ -30,7 +30,7 @@ function PageHero({ hero, isHome = false, showGlassStats = isHome }) {
         animate="visible"
         variants={stagger}
       >
-        <div className="max-w-4xl text-white">
+        <div className={`max-w-4xl text-white ${isHome ? 'lg:ml-[33vw] xl:ml-[28vw]' : ''}`}>
           <motion.p variants={fadeUp} className="section-label !text-white/78">
             {hero.label}
           </motion.p>
